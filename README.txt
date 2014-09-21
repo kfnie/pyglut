@@ -49,6 +49,6 @@ $ sudo pip install pyglut
 
 $ sudo python -m pip install pyglut
 
-# To install the module pyglut use the pip module:
+# To install the module under Windows pyglut use the pip module:
 
 $ python -m pip install pyglut
