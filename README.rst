@@ -1,7 +1,17 @@
 
-===================
-pyglut description.
-===================
+======
+pyglut
+======
+
+  :SnakeByte: A snake pacman game for entertainment.
+  
+  :Writing by: Eddie Brüggemann
+  
+  :Language: python 2.7.3
+  
+  :Contact: mrcyberfighter@gmail.com
+  
+  :Credits: Thank's to my beloved mother, my family and to the doctors.
 
 --------------------------------------
 **pyglut for python OpenGL utilities**
@@ -366,6 +376,28 @@ Spheres
         And setter methods for the **lines colors**, the **faces color**, the **display mode**, the **line width** and other settings.              
         
         
+------------
+Installation
+------------
 
-        
-                 
+    `pyglut <https://pypi.python.org/pypi/pyglut/1.0.0>`_ is hosted on the `PyPI (Python Package Index) <https://pypi.python.org/pypi>`_ .
+    
+    And you can install **pyglut** with the pip program:
+    
+    ..
+    
+      $ sudo pip install pyglut
+      
+    Or with the python-pip module:
+    
+    ..
+    
+      $ sudo python -m pip install pyglut
+      
+---------      
+Copyright
+---------
+
++--------------------------------------------------------------------------+
+| This programm is under copyright from the GPL GNU GENERAL PUBLIC LICENSE |
++--------------------------------------------------------------------------+      
