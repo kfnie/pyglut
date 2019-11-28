@@ -60,15 +60,16 @@ def resizeGL(width,height) :
   z_far=1000.0                     # Distance in depth.
 
   glMatrixMode(GL_PROJECTION)      # Enable Projection matrix configuration.  
-  glLoadIdentity()          
+  glLoadIdentity()
+  aspect_ratio = float(width/height)
   gluPerspective( fov_angle, 
-                  float(width)/float(height),
+                  aspect_ratio,
                   z_near, 
                   z_far )
                     
   glLoadIdentity()
-  glOrtho( -30.0,                   # Left coordinates value.   ( x_min ) 
-            30.0,                   # Right coordinates value.  ( x_max ) 
+  glOrtho( -30.0 * aspect_ratio,    # Left coordinates value.   ( x_min ) 
+            30.0 * aspect_ratio,    # Right coordinates value.  ( x_max ) 
            -30.0,                   # Bottom coordinates value. ( y_min )
             30.0,                   # Top coordinates value.    ( y_max )  
            -30.0,                   # Near coordinates value.   ( z_min ) 
