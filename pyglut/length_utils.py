@@ -49,8 +49,8 @@ def get_perimeter_from_polygon(points) :
   perimeter=0.0  # Perimeter value container variable.
   
   i=-1           # Initialisation of the iterator variable so that 
-		 # we can access it, added from one, for the points list indexing.
-		  
+                 # we can access it, added from one, for the points list indexing.
+                  
   while i < len(points)-1 :
     # Loop on every segment from the polygon.
     
@@ -74,7 +74,7 @@ def get_perimeter_from_polyhedron(points) :
     
     for y in v :
       if not isinstance(y,Vertex) :
-	raise TypeError(Vertex)
+        raise TypeError(Vertex)
       
   list_checked=[]  # Container for already computed sides from the polyhedron.
   
@@ -84,20 +84,20 @@ def get_perimeter_from_polyhedron(points) :
     # We iterate on every polygon from the polyhedron.
     
     i=-1      # Initialisation of the iterator variable so that 
-	      # we can access it, added from one, for the points list indexing.
-	  
+              # we can access it, added from one, for the points list indexing.
+          
     while i < len(v)-1 :
       # Iteration on the vertex from an polygon composing the polyhedron.
       
       if not (v[i],v[i+1]) in list_checked and not (v[i+1],v[i]) in list_checked :
-	# Side not already computed.
-	
-	# We increment the variable perimeter with the returning from the function computing 
-	# the distance beetween 2 vertices.
-	perimeter += get_distance_vertices(v[i],v[i+1])
-	
-	# We append this polyhedron side to the already computed side list.
-	list_checked.append((v[i],v[i+1]))
+        # Side not already computed.
+        
+        # We increment the variable perimeter with the returning from the function computing 
+        # the distance beetween 2 vertices.
+        perimeter += get_distance_vertices(v[i],v[i+1])
+        
+        # We append this polyhedron side to the already computed side list.
+        list_checked.append((v[i],v[i+1]))
       
       i += 1  # Iterator variable incrementation.
     

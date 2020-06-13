@@ -41,7 +41,7 @@ def generate_quad_sphere(basis,radius) :
     raise TypeError(int)
 
   if basis < 6 or basis % 2 :
-    print "the basis for the sphere must be greater as 5 and basis % 2 == 0 "
+    print("the basis for the sphere must be greater as 5 and basis % 2 == 0 ")
     quit()
 
   if not isinstance(radius,int) and not isinstance(radius,float) :
@@ -127,7 +127,7 @@ def generate_trigon_sphere(basis,radius) :
     raise TypeError(int)
 
   if basis < 8 or basis % 4 :
-    print "the basis for the sphere miust be greater as 7 and basis % 4 == 0 "
+    print("the basis for the sphere miust be greater as 7 and basis % 4 == 0 ")
     quit()
 
   if not isinstance(radius,int) and not isinstance(radius,float) :

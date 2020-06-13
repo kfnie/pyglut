@@ -75,29 +75,29 @@ class Fulleren(object) :
       if not isinstance(pentagons_color,Color) and not isinstance(pentagons_color,list) :
         raise TypeError(pentagons_color,Color,list)
       elif isinstance(pentagons_color,list) and len(pentagons_color) != 12 :
-	print "Error pentagons_color argument:\nYou must give an list from 12 Color objects.\nOne Color object per face."
-	quit()
+        print("Error pentagons_color argument:\nYou must give an list from 12 Color objects.\nOne Color object per face.")
+        quit()
       elif isinstance(pentagons_color,list) and len(pentagons_color) == 12 :
         tmp=[]
         pentagons_color_index=0
         while pentagons_color_index < 12 :
-	  if type(pentagons_color[pentagons_color_index].a) == bool :
-	    pentagons_color[pentagons_color_index].a=0
-	  pentagons_color_index += 1
+          if type(pentagons_color[pentagons_color_index].a) == bool :
+            pentagons_color[pentagons_color_index].a=0
+          pentagons_color_index += 1
       
     if hexagons_color :
       if not isinstance(hexagons_color,Color) and not isinstance(hexagons_color,list) :
         raise TypeError(hexagons_color,Color,list)
       elif isinstance(hexagons_color,list) and len(hexagons_color) != 20 :
-	print "Error hexagons_color argument:\nYou must give an list from 20 Color objects.\nOne Color object per face."
-	quit()
+        print("Error hexagons_color argument:\nYou must give an list from 20 Color objects.\nOne Color object per face.")
+        quit()
       elif isinstance(hexagons_color,list) and len(hexagons_color) == 20 :
         tmp=[]
         hexagons_color_index=0
         while hexagons_color_index < 20 :
-	  if type(hexagons_color[hexagons_color_index].a) == bool :
-	    hexagons_color[hexagons_color_index].a=0
-	  hexagons_color_index += 1    
+          if type(hexagons_color[hexagons_color_index].a) == bool :
+            hexagons_color[hexagons_color_index].a=0
+          hexagons_color_index += 1    
         
     
     if not isinstance(lines_width,int) :
@@ -111,11 +111,11 @@ class Fulleren(object) :
     
     if isinstance(pentagons_color,Color) :
       if type(pentagons_color.a) == bool :
-	pentagons_color.a=0
-	
+        pentagons_color.a=0
+        
     if isinstance(hexagons_color,Color) :
       if type(hexagons_color.a) == bool :
-	hexagons_color.a=0 	
+        hexagons_color.a=0      
     
     if isinstance(display_ls,bool) :
       self.display_ls=display_ls
@@ -142,16 +142,16 @@ class Fulleren(object) :
       # Loop over every pentagon from the polyhedron. 
       tmp_polygon=[]
       for lines in polygon :
-	tmp_lines=[]
-	for vertex in lines :
-	  # Loop over every vertice from the polygon.
-	  res_vertex= matrix * vertex # Multiply the current vertice with the matrix
-	  
-	  # Storing the new position from the vertice.
-	  tmp_lines.append(res_vertex)  # For the polyhedron polygon container.
-	  center.append(res_vertex)       # For polyhedron center computing.
-	  
-	tmp_polygon.append(tmp_lines)  
+        tmp_lines=[]
+        for vertex in lines :
+          # Loop over every vertice from the polygon.
+          res_vertex= matrix * vertex # Multiply the current vertice with the matrix
+          
+          # Storing the new position from the vertice.
+          tmp_lines.append(res_vertex)  # For the polyhedron polygon container.
+          center.append(res_vertex)       # For polyhedron center computing.
+          
+        tmp_polygon.append(tmp_lines)  
       tmp_pentagons.append(tmp_polygon)
     
     self.pentagons=tmp_pentagons          # Update the pentagon container with the new postion from every vertice.
@@ -161,17 +161,17 @@ class Fulleren(object) :
       # Loop over every hexagon from the polyhedron. 
       tmp_polygon=[]
       for lines in polygon :
-	tmp_lines=[]
-	for vertex in lines :
-	  # Loop over every vertice from the polygon.
-	
-	  res_vertex= matrix * vertex # Multiply the current vertice with the matrix
-	  
-	  # Storing the new position from the vertice.
-	  tmp_lines.append(res_vertex)  # For the polyhedron polygon container.
-	  center.append(res_vertex)       # For polyhedron center computing.
-	
-	tmp_polygon.append(tmp_lines)  
+        tmp_lines=[]
+        for vertex in lines :
+          # Loop over every vertice from the polygon.
+        
+          res_vertex= matrix * vertex # Multiply the current vertice with the matrix
+          
+          # Storing the new position from the vertice.
+          tmp_lines.append(res_vertex)  # For the polyhedron polygon container.
+          center.append(res_vertex)       # For polyhedron center computing.
+        
+        tmp_polygon.append(tmp_lines)  
       tmp_hexagons.append(tmp_polygon)
     
     self.hexagons=tmp_hexagons            # Update the hexagon container with the new postion from every vertice.
@@ -189,138 +189,138 @@ class Fulleren(object) :
       glPolygonMode(GL_FRONT_AND_BACK,GL_LINE)
       
       if self.lines_color :
-	# Lines color configuration. 
-	glColor4ubv(self.lines_color.get_ubyte_v())
+        # Lines color configuration. 
+        glColor4ubv(self.lines_color.get_ubyte_v())
       
       glLineWidth(self.lines_width)
     
     
       for polygon in self.hexagons :
-	# Loop over every hexagon from the polyhedron. 
-	# For only lines displaying.
+        # Loop over every hexagon from the polyhedron. 
+        # For only lines displaying.
         glBegin(GL_POLYGON)
         for lines in polygon :
-	  for v in lines :
-	    # We loop over the every vertice from the polygon.
-	    glVertex3fv(v.get_vertex())
-        glEnd()	
+          for v in lines :
+            # We loop over the every vertice from the polygon.
+            glVertex3fv(v.get_vertex())
+        glEnd() 
       
     
     elif self.display_mode == "faced" :
       # Configuration of polygons faces displaying.
       glPolygonMode(GL_FRONT_AND_BACK,GL_FILL)
       if self.pentagons_color and isinstance(self.pentagons_color,Color) :
-	# Case one same color for the faces displaying.
-	glColor4ubv(self.pentagons_color.get_ubyte_v())
+        # Case one same color for the faces displaying.
+        glColor4ubv(self.pentagons_color.get_ubyte_v())
       
       
-	
-      pentagons_color_index=0  # Iterator, case there are more than one color for the faces displaying.	
-	
+        
+      pentagons_color_index=0  # Iterator, case there are more than one color for the faces displaying. 
+        
       if self.pentagons_color and isinstance(self.pentagons_color,Color) :
-	# Case one same color for the faces displaying.
-	glColor4ubv(self.pentagons_color.get_ubyte_v())
+        # Case one same color for the faces displaying.
+        glColor4ubv(self.pentagons_color.get_ubyte_v())
       
       for polygon in self.pentagons :
-	# Loop over every pentagon from the polyhedron. 
-	if self.pentagons_color and isinstance(self.pentagons_color,list) : 
-	  # Case there are more than one color for the faces displaying.
-	  glColor4ubv(self.pentagons_color[pentagons_color_index].get_ubyte_v())
-	  
-	glBegin(GL_POLYGON)
-	for lines in polygon :
-	  for v in lines :
-	    # We loop over the every vertice from the polygon.
-	    glVertex3fv(v.get_vertex())
-	glEnd()	
+        # Loop over every pentagon from the polyhedron. 
+        if self.pentagons_color and isinstance(self.pentagons_color,list) : 
+          # Case there are more than one color for the faces displaying.
+          glColor4ubv(self.pentagons_color[pentagons_color_index].get_ubyte_v())
+          
+        glBegin(GL_POLYGON)
+        for lines in polygon :
+          for v in lines :
+            # We loop over the every vertice from the polygon.
+            glVertex3fv(v.get_vertex())
+        glEnd() 
     
-	pentagons_color_index += 1
+        pentagons_color_index += 1
       
       if self.hexagons_color and isinstance(self.hexagons_color,Color) :
-	# Case one same color for the faces displaying.
-	glColor4ubv(self.hexagons_color.get_ubyte_v())
-	
-      hexagons_color_index=0  # Iterator, case there are more than one color for the faces displaying. 	
-	
+        # Case one same color for the faces displaying.
+        glColor4ubv(self.hexagons_color.get_ubyte_v())
+        
+      hexagons_color_index=0  # Iterator, case there are more than one color for the faces displaying.  
+        
       for polygon in self.hexagons :
-	# Loop over every hexagon from the polyhedron. 
-	if self.hexagons_color and isinstance(self.hexagons_color,list) : 
-	  # Case there are more than one color for the faces displaying.
-	  glColor4ubv(self.hexagons_color[hexagons_color_index].get_ubyte_v())
-	  
-	glBegin(GL_POLYGON)
-	for lines in polygon :
-	  for v in lines :
-	    # We loop over the every vertice from the polygon.
-	    glVertex3fv(v.get_vertex())
-	glEnd()
-	hexagons_color_index += 1
+        # Loop over every hexagon from the polyhedron. 
+        if self.hexagons_color and isinstance(self.hexagons_color,list) : 
+          # Case there are more than one color for the faces displaying.
+          glColor4ubv(self.hexagons_color[hexagons_color_index].get_ubyte_v())
+          
+        glBegin(GL_POLYGON)
+        for lines in polygon :
+          for v in lines :
+            # We loop over the every vertice from the polygon.
+            glVertex3fv(v.get_vertex())
+        glEnd()
+        hexagons_color_index += 1
       
     elif self.display_mode == "twice" :
       # Configuration of polygons faces displaying.
       glPolygonMode(GL_FRONT_AND_BACK,GL_FILL)
       if self.pentagons_color and isinstance(self.pentagons_color,Color) :
-	# Case one same color for the faces displaying.
-	glColor4ubv(self.pentagons_color.get_ubyte_v())
+        # Case one same color for the faces displaying.
+        glColor4ubv(self.pentagons_color.get_ubyte_v())
       
       
-	
-      pentagons_color_index=0	
+        
+      pentagons_color_index=0   
       for polygon in self.pentagons :
-	# Loop over every pentagon from the polyhedron. 
-	if self.pentagons_color and isinstance(self.pentagons_color,list) : 
-	  # Case there are more than one color for the faces displaying.
-	  glColor4ubv(self.pentagons_color[pentagons_color_index].get_ubyte_v())
-	  
-	glBegin(GL_POLYGON)
-	for lines in polygon :
-	  for v in lines :
-	    # We loop over the every vertice from the polygon.
-	    glVertex3fv(v.get_vertex())
-	glEnd()	
+        # Loop over every pentagon from the polyhedron. 
+        if self.pentagons_color and isinstance(self.pentagons_color,list) : 
+          # Case there are more than one color for the faces displaying.
+          glColor4ubv(self.pentagons_color[pentagons_color_index].get_ubyte_v())
+          
+        glBegin(GL_POLYGON)
+        for lines in polygon :
+          for v in lines :
+            # We loop over the every vertice from the polygon.
+            glVertex3fv(v.get_vertex())
+        glEnd() 
     
-	pentagons_color_index += 1
+        pentagons_color_index += 1
       
       if self.hexagons_color and isinstance(self.hexagons_color,Color) :
-	# Case one same color for the faces displaying.
-	glColor4ubv(self.hexagons_color.get_ubyte_v())
-	
-      hexagons_color_index=0  # Iterator, case there are more than one color for the faces displaying.	
-	
+        # Case one same color for the faces displaying.
+        glColor4ubv(self.hexagons_color.get_ubyte_v())
+        
+      hexagons_color_index=0  # Iterator, case there are more than one color for the faces displaying.  
+        
       for polygon in self.hexagons :
-	# Loop over every hexagon from the polyhedron. 
-	if self.hexagons_color and isinstance(self.hexagons_color,list) :
-	  # Case there are more than one color for the faces displaying.
-	  glColor4ubv(self.hexagons_color[hexagons_color_index].get_ubyte_v())
-	  
-	glBegin(GL_POLYGON)
-	for lines in polygon :
-	  for v in lines :
-	    # We loop over the every vertice from the polygon.
-	    glVertex3fv(v.get_vertex())
-	glEnd()
-	
-	hexagons_color_index += 1
+        # Loop over every hexagon from the polyhedron. 
+        if self.hexagons_color and isinstance(self.hexagons_color,list) :
+          # Case there are more than one color for the faces displaying.
+          glColor4ubv(self.hexagons_color[hexagons_color_index].get_ubyte_v())
+          
+        glBegin(GL_POLYGON)
+        for lines in polygon :
+          for v in lines :
+            # We loop over the every vertice from the polygon.
+            glVertex3fv(v.get_vertex())
+        glEnd()
+        
+        hexagons_color_index += 1
       
       # Configuration of polygons lines displaying.
       glPolygonMode(GL_FRONT_AND_BACK,GL_LINE)
       
       if self.lines_color :
-	# Lines color configuration. 
-	glColor4ubv(self.lines_color.get_ubyte_v())
+        # Lines color configuration. 
+        glColor4ubv(self.lines_color.get_ubyte_v())
       
       glLineWidth(self.lines_width)
     
     
       for polygon in self.hexagons :
-	# Loop over every hexagon from the polyhedron.
-	# For only lines displaying.
+        # Loop over every hexagon from the polyhedron.
+        # For only lines displaying.
         glBegin(GL_POLYGON)
         for lines in polygon :
-	  for v in lines :
-	    # We loop over the every vertice from the polygon.
-	    glVertex3fv(v.get_vertex())
-        glEnd()	
+          for v in lines :
+            # We loop over the every vertice from the polygon.
+            glVertex3fv(v.get_vertex())
+        glEnd() 
       
     if self.display_ls :
       # Displaying the Localview.
@@ -352,8 +352,8 @@ class Fulleren(object) :
         raise TypeError("Argument lines_color",Color)
       
       if isinstance(lines_color.a,bool) :
-	lines_color.a=0
-	
+        lines_color.a=0
+        
     self.lines_color=lines_color
     
   def set_pentagons_color(self,pentagons_color) :
@@ -370,23 +370,23 @@ class Fulleren(object) :
         raise TypeError(pentagons_color,Color,list)
       
       elif isinstance(pentagons_color,list) and len(pentagons_color) != 12 :
-	print "Error pentagons_color argument:\nYou must give an list from 12 Color objects.\nOne Color object per face."
-	quit()
-	
+        print("Error pentagons_color argument:\nYou must give an list from 12 Color objects.\nOne Color object per face.")
+        quit()
+        
       elif isinstance(pentagons_color,list) and len(pentagons_color) == 12 :
         tmp=[]
         pentagons_color_index=0
         while pentagons_color_index < 12 :
-	  if type(pentagons_color[pentagons_color_index].a) == bool :
-	    pentagons_color[pentagons_color_index].a=0
-	  pentagons_color_index += 1
+          if type(pentagons_color[pentagons_color_index].a) == bool :
+            pentagons_color[pentagons_color_index].a=0
+          pentagons_color_index += 1
     
       elif isinstance(pentagons_color,Color) :
-	if type(pentagons_color.a) == bool :
-	    pentagons_color.a=0	  
+        if type(pentagons_color.a) == bool :
+            pentagons_color.a=0   
       
       else :
-	raise TypeError(Color)
+        raise TypeError(Color)
       
       self.pentagons_color=pentagons_color
     
@@ -404,23 +404,23 @@ class Fulleren(object) :
         raise TypeError(hexagons_color,Color,list)
       
       elif isinstance(hexagons_color,list) and len(hexagons_color) != 20 :
-	print "Error hexagons_color argument:\nYou must give an list from 20 Color objects.\nOne Color object per face."
-	quit()
+        print("Error hexagons_color argument:\nYou must give an list from 20 Color objects.\nOne Color object per face.")
+        quit()
       
       elif isinstance(hexagons_color,list) and len(hexagons_color) == 20 :
         tmp=[]
         hexagons_color_index=0
         while hexagons_color_index < 20 :
-	  if type(hexagons_color[hexagons_color_index].a) == bool :
-	    hexagons_color[hexagons_color_index].a=0
-	  hexagons_color_index += 1    
+          if type(hexagons_color[hexagons_color_index].a) == bool :
+            hexagons_color[hexagons_color_index].a=0
+          hexagons_color_index += 1    
       
       elif isinstance(hexagons_color,Color) :
-	if type(hexagons_color.a) == bool :
-	    hexagons_color.a=0	  
+        if type(hexagons_color.a) == bool :
+            hexagons_color.a=0    
       
       else :
-	raise TypeError(Color)
+        raise TypeError(Color)
       
       self.hexagons_color=hexagons_color  
     
@@ -460,7 +460,7 @@ class Fulleren(object) :
   def __doc__(self) :
     ''' Print documentation '''
     
-    print '''
+    print('''
     Generate an fulleren object with position updating, 
     display and settings setters methods.
     
@@ -494,4 +494,4 @@ class Fulleren(object) :
     The datatype Localview is available throught this module. 
     sea his documentation to know more about.
     
-    '''      
+    ''')

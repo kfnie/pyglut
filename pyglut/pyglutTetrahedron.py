@@ -71,17 +71,17 @@ class Tetrahedron(object) :
       if not isinstance(faces_color,Color) and not isinstance(faces_color,list) :
         raise TypeError(faces_color,Color,list)
       elif isinstance(faces_color,list) and len(faces_color) != 4 :
-	print "Error faces_color argument:\nYou must give an list from 4 Color objects.\nOne Color object per face."
-	quit()
+        print("Error faces_color argument:\nYou must give an list from 4 Color objects.\nOne Color object per face.")
+        quit()
       elif isinstance(faces_color,list) and len(faces_color) == 4 :
         tmp=[]
         faces_color_index=0
         while faces_color_index < 4 :
-	  if type(faces_color[faces_color_index].a) == bool :
-	    faces_color[faces_color_index].a=0
-	  faces_color_index += 1
+          if type(faces_color[faces_color_index].a) == bool :
+            faces_color[faces_color_index].a=0
+          faces_color_index += 1
       
-         	
+                
     
     if not isinstance(lines_width,int) :
       raise TypeError("Argument lines_width",int)
@@ -94,7 +94,7 @@ class Tetrahedron(object) :
     
     if isinstance(faces_color,Color) :
       if type(faces_color.a) == bool :
-	faces_color.a=0
+        faces_color.a=0
     
     if isinstance(display_ls,bool) :
       self.display_ls=display_ls
@@ -122,13 +122,13 @@ class Tetrahedron(object) :
       tmp_polygon=[]
       
       for vertex in polygon :
-	# Loop over every vertice from the polygon.
-	
-	res_vertex= matrix * vertex # Multiply the current vertice with the matrix
- 	
- 	# Storing the new position from the vertice.
- 	tmp_polygon.append(res_vertex)  # For the polyhedron polygon container.
-	center.append(res_vertex)       # For polyhedron center computing.
+        # Loop over every vertice from the polygon.
+        
+        res_vertex= matrix * vertex # Multiply the current vertice with the matrix
+        
+        # Storing the new position from the vertice.
+        tmp_polygon.append(res_vertex)  # For the polyhedron polygon container.
+        center.append(res_vertex)       # For polyhedron center computing.
       
       tmp_polyhedron.append(tmp_polygon)
     
@@ -149,58 +149,58 @@ class Tetrahedron(object) :
     if self.display_mode == "lined" or self.display_mode == "faced" :
       
       if self.display_mode == "lined" and self.lines_color :
-	  # Configuration of polygons lines displaying.
-	  glPolygonMode(GL_FRONT_AND_BACK,GL_LINE)
-	  
-	  if self.lines_color :
-	    # Lines color configuration. 
-	    glColor4ubv(self.lines_color.get_ubyte_v())
+          # Configuration of polygons lines displaying.
+          glPolygonMode(GL_FRONT_AND_BACK,GL_LINE)
+          
+          if self.lines_color :
+            # Lines color configuration. 
+            glColor4ubv(self.lines_color.get_ubyte_v())
 
-	  glLineWidth(self.lines_width)
-	
+          glLineWidth(self.lines_width)
+        
       elif self.display_mode == "faced" :
-	# Configuration of polygons faces displaying.
-	glPolygonMode(GL_FRONT_AND_BACK,GL_FILL)
-	
-	if self.faces_color and isinstance(self.faces_color,Color) :
-	  # Faces colorizing configuration.
-	  glColor4ubv(self.faces_color.get_ubyte_v())
+        # Configuration of polygons faces displaying.
+        glPolygonMode(GL_FRONT_AND_BACK,GL_FILL)
+        
+        if self.faces_color and isinstance(self.faces_color,Color) :
+          # Faces colorizing configuration.
+          glColor4ubv(self.faces_color.get_ubyte_v())
       
       for polygon in self.polyhedron :
-	# We loop over the polyhedron polygons container.
-	
-	if self.faces_color and isinstance(self.faces_color,list) and self.display_mode == "faced" : 
-	  # Faces multi-colorizing configuration.
-	  glColor4ubv(self.faces_color[faces_color_index].get_ubyte_v())
-	
-	# Displaying one polygon:
-	glBegin(GL_POLYGON)
-	for v in polygon :
-	  # We loop over the every vertice from the polygon.
-	  glVertex3fv(v.get_vertex())
-	glEnd()	
-	
-	faces_color_index += 1 
+        # We loop over the polyhedron polygons container.
+        
+        if self.faces_color and isinstance(self.faces_color,list) and self.display_mode == "faced" : 
+          # Faces multi-colorizing configuration.
+          glColor4ubv(self.faces_color[faces_color_index].get_ubyte_v())
+        
+        # Displaying one polygon:
+        glBegin(GL_POLYGON)
+        for v in polygon :
+          # We loop over the every vertice from the polygon.
+          glVertex3fv(v.get_vertex())
+        glEnd() 
+        
+        faces_color_index += 1 
       
     elif self.display_mode == "twice" :
       
       glPolygonMode(GL_FRONT_AND_BACK,GL_FILL)
       
       if self.faces_color and isinstance(self.faces_color,Color) :
-	glColor4ubv(self.faces_color.get_ubyte_v())
-	
+        glColor4ubv(self.faces_color.get_ubyte_v())
+        
       for faces in self.polyhedron :
-	# We loop over the polyhedron polygons container.
-	
-	if self.faces_color and isinstance(self.faces_color,list) :
-	  # Faces multi-colorizing configuration.
-	  glColor4ubv(self.faces_color[faces_color_index].get_ubyte_v())
-	  
-	# Displaying one polygon face:  
-	glBegin(GL_POLYGON)
+        # We loop over the polyhedron polygons container.
+        
+        if self.faces_color and isinstance(self.faces_color,list) :
+          # Faces multi-colorizing configuration.
+          glColor4ubv(self.faces_color[faces_color_index].get_ubyte_v())
+          
+        # Displaying one polygon face:  
+        glBegin(GL_POLYGON)
         for v in faces :
-	   # We loop over the every vertice from the face.
-	  glVertex3fv(v.get_vertex())
+           # We loop over the every vertice from the face.
+          glVertex3fv(v.get_vertex())
         glEnd()
         
         faces_color_index += 1  
@@ -208,18 +208,18 @@ class Tetrahedron(object) :
       glPolygonMode(GL_FRONT_AND_BACK,GL_LINE)
       
       if self.lines_color :
-	# Lines color configuration. 
-	glColor4ubv(self.lines_color.get_ubyte_v())
+        # Lines color configuration. 
+        glColor4ubv(self.lines_color.get_ubyte_v())
       
       glLineWidth(self.lines_width)
       
       # Displaying one polygon face edges: 
       for faces in self.polyhedron :
-	
-	glBegin(GL_POLYGON)
+        
+        glBegin(GL_POLYGON)
         for v in faces :
-	  # We loop over the every vertice from the face.
-	  glVertex3fv(v.get_vertex())
+          # We loop over the every vertice from the face.
+          glVertex3fv(v.get_vertex())
         glEnd() 
       
     if self.display_ls :
@@ -252,8 +252,8 @@ class Tetrahedron(object) :
         raise TypeError("Argument lines_color",Color)
       
       if isinstance(lines_color.a,bool) :
-	lines_color.a=0
-	
+        lines_color.a=0
+        
     self.lines_color=lines_color
     
   def set_faces_color(self,faces_color) :
@@ -268,20 +268,20 @@ class Tetrahedron(object) :
       raise TypeError(faces_color,Color,list)
     
     elif isinstance(faces_color,list) and len(faces_color) != 4 :
-      print "Error faces_color argument:\nYou must give an list from 4 Color objects.\nOne Color object per face."
+      print("Error faces_color argument:\nYou must give an list from 4 Color objects.\nOne Color object per face.")
       quit()
     
     elif isinstance(faces_color,list) and len(faces_color) == 4 :
       tmp=[]
       faces_color_index=0
       while faces_color_index < 4 :
-	if isinstance(faces_color[faces_color_index].a,bool) :
-	  faces_color[faces_color_index].a=0
-	faces_color_index += 1
+        if isinstance(faces_color[faces_color_index].a,bool) :
+          faces_color[faces_color_index].a=0
+        faces_color_index += 1
     
     elif isinstance(faces_color,Color) :
       if type(faces_color.a) == bool :
-	faces_color.a=0	  
+        faces_color.a=0   
     
     else :
       raise TypeError(Color)
@@ -324,7 +324,7 @@ class Tetrahedron(object) :
   def __doc__(self) :
     ''' Print documentation '''
     
-    print '''
+    print('''
     Generate an tetrahedron object with position updating, 
     display and settings setters methods.
     
@@ -352,8 +352,4 @@ class Tetrahedron(object) :
     The datatype Localview is available throught this module. 
     sea his documentation to know more about.
     
-    '''
-      
-      
-      
-            
+    ''')

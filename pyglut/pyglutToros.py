@@ -57,7 +57,7 @@ class Toros(object) :
       raise TypeError("base_polygon argument",int)
 
     if base_polygon <= 2 :
-      print "the base polygon must be greater than 2 "
+      print("the base polygon must be greater than 2 ")
       quit()
     
     
@@ -86,7 +86,7 @@ class Toros(object) :
         raise TypeError("Argument faces_color",Color)
       
       
-         	
+                
     
     if not isinstance(lines_width,int) :
       raise TypeError(lines_width,int)
@@ -99,7 +99,7 @@ class Toros(object) :
     
     if isinstance(faces_color,Color) :
       if type(faces_color.a) == bool :
-	faces_color.a=0
+        faces_color.a=0
     
     if isinstance(display_ls,bool) :
       self.display_ls=display_ls
@@ -128,13 +128,13 @@ class Toros(object) :
       tmp_polygon=[]
       
       for vertex in polygon :
-	# Loop over every vertice from the polygon.
-	
-	res_vertex= matrix * vertex # Multiply the current vertice with the matrix
- 	
- 	# Storing the new position from the vertice.
- 	tmp_polygon.append(res_vertex)  # For the toros polygon container.
-	center.append(res_vertex)       # For toros center computing.
+        # Loop over every vertice from the polygon.
+        
+        res_vertex= matrix * vertex # Multiply the current vertice with the matrix
+        
+        # Storing the new position from the vertice.
+        tmp_polygon.append(res_vertex)  # For the toros polygon container.
+        center.append(res_vertex)       # For toros center computing.
       
       tmp_toros.append(tmp_polygon)
     
@@ -147,93 +147,93 @@ class Toros(object) :
   def display(self) :
     if self.display_mode == "lined" :
       if self.lines_color :
-        # Lines color configuration. 	
+        # Lines color configuration.    
         glColor4ubv(self.lines_color.get_ubyte_v())
       
       glLineWidth(self.lines_width)    # Setting the line width given as argument.
       
       i=0
       while i < len(self.toros) :
-	glBegin(GL_LINE_LOOP)
-	for v in self.toros[i] :
-	  glVertex3fv(v.get_vertex())
-	glEnd()
-	i += 1
+        glBegin(GL_LINE_LOOP)
+        for v in self.toros[i] :
+          glVertex3fv(v.get_vertex())
+        glEnd()
+        i += 1
       
       i=-1
       while i < len(self.toros)-1 :
-	ii=0
-	while ii < len(self.toros[i]) :
-	  glBegin(GL_LINES)
-	  glVertex3fv(self.toros[i][ii].get_vertex())
-	  glVertex3fv(self.toros[i+1][ii].get_vertex())
-	  glEnd()
-	  ii += 1
-	i += 1	
-	
+        ii=0
+        while ii < len(self.toros[i]) :
+          glBegin(GL_LINES)
+          glVertex3fv(self.toros[i][ii].get_vertex())
+          glVertex3fv(self.toros[i+1][ii].get_vertex())
+          glEnd()
+          ii += 1
+        i += 1  
+        
     elif self.display_mode == "faced" :
       
       if self.faces_color :
-	# Faces color configuration. 
+        # Faces color configuration. 
         glColor4ubv(self.faces_color.get_ubyte_v())
-	
+        
       i=-1
       while i < len(self.toros)-1 :
-	ii=-1
-	while ii < len(self.toros[i])-1 :
-	  glBegin(GL_QUADS)
-	  glVertex3fv(self.toros[i][ii].get_vertex())
-	  glVertex3fv(self.toros[i+1][ii].get_vertex())
-	  glVertex3fv(self.toros[i+1][ii+1].get_vertex())
-	  glVertex3fv(self.toros[i][ii+1].get_vertex())
-	  glEnd()
-	  ii += 1
-	i += 1	
-		    
+        ii=-1
+        while ii < len(self.toros[i])-1 :
+          glBegin(GL_QUADS)
+          glVertex3fv(self.toros[i][ii].get_vertex())
+          glVertex3fv(self.toros[i+1][ii].get_vertex())
+          glVertex3fv(self.toros[i+1][ii+1].get_vertex())
+          glVertex3fv(self.toros[i][ii+1].get_vertex())
+          glEnd()
+          ii += 1
+        i += 1  
+                    
       
     elif self.display_mode == "twice" :  
       
       if self.faces_color :
         glColor4ubv(self.faces_color.get_ubyte_v())
-	
+        
       i=-1
       while i < len(self.toros)-1 :
-	ii=-1
-	while ii < len(self.toros[i])-1 :
-	  glBegin(GL_QUADS)
-	  glVertex3fv(self.toros[i][ii].get_vertex())
-	  glVertex3fv(self.toros[i+1][ii].get_vertex())
-	  glVertex3fv(self.toros[i+1][ii+1].get_vertex())
-	  glVertex3fv(self.toros[i][ii+1].get_vertex())
-	  glEnd()
-	  ii += 1
-	i += 1	
-	
+        ii=-1
+        while ii < len(self.toros[i])-1 :
+          glBegin(GL_QUADS)
+          glVertex3fv(self.toros[i][ii].get_vertex())
+          glVertex3fv(self.toros[i+1][ii].get_vertex())
+          glVertex3fv(self.toros[i+1][ii+1].get_vertex())
+          glVertex3fv(self.toros[i][ii+1].get_vertex())
+          glEnd()
+          ii += 1
+        i += 1  
+        
       if self.lines_color :
-        # Lines color configuration. 	
+        # Lines color configuration.    
         glColor4ubv(self.lines_color.get_ubyte_v())
       
       glLineWidth(self.lines_width)    # Setting the line width given as argument.
       
       i=0
       while i < len(self.toros) :
-	glBegin(GL_LINE_LOOP)
-	for v in self.toros[i] :
-	  glVertex3fv(v.get_vertex())
-	glEnd()
-	i += 1
+        glBegin(GL_LINE_LOOP)
+        for v in self.toros[i] :
+          glVertex3fv(v.get_vertex())
+        glEnd()
+        i += 1
       
       i=-1
       while i < len(self.toros)-1 :
-	ii=0
-	while ii < len(self.toros[i]) :
-	  glBegin(GL_LINES)
-	  glVertex3fv(self.toros[i][ii].get_vertex())
-	  glVertex3fv(self.toros[i+1][ii].get_vertex())
-	  glEnd()
-	  ii += 1
-	i += 1	
-	
+        ii=0
+        while ii < len(self.toros[i]) :
+          glBegin(GL_LINES)
+          glVertex3fv(self.toros[i][ii].get_vertex())
+          glVertex3fv(self.toros[i+1][ii].get_vertex())
+          glEnd()
+          ii += 1
+        i += 1  
+        
     if self.display_ls :
       # Displaying the Localview.
       self.ls.display(self.base_radius*2.0/10.0)
@@ -264,8 +264,8 @@ class Toros(object) :
         raise TypeError("Argument lines_color",Color)
       
       if isinstance(lines_color.a,bool) :
-	lines_color.a=0
-	
+        lines_color.a=0
+        
     self.lines_color=lines_color
     
   def set_faces_color(self,faces_color) :
@@ -276,7 +276,7 @@ class Toros(object) :
     
     if isinstance(faces_color,Color) :
       if type(faces_color.a) == bool :
-	faces_color.a=0	  
+        faces_color.a=0   
     
     else :
       raise TypeError(Color)
@@ -313,7 +313,7 @@ class Toros(object) :
       raise TypeError("base_polygon argument",int)
 
     if base_polygon <= 2 :
-      print "the base polygon must be greater than 2 "
+      print("the base polygon must be greater than 2 ")
       quit()
     
     
@@ -348,7 +348,7 @@ class Toros(object) :
   def __doc__(self) :
     ''' Print documentation '''
     
-    print '''
+    print('''
     Generate an toros object with position updating, 
     display and settings setters methods.
     
@@ -374,4 +374,4 @@ class Toros(object) :
     The datatype Localview is available throught this module. 
     sea his documentation to know more about.
     
-    '''        
+    ''')

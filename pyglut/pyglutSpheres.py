@@ -59,7 +59,7 @@ class Quad_Sphere(object) :
       raise TypeError(int)
 
     if basis < 6 or basis % 2 :
-      print "the basis for the sphere must be greater as 5 and basis % 2 == 0 "
+      print("the basis for the sphere must be greater as 5 and basis % 2 == 0 ")
       quit()
     
     if display_mode == "lined" or display_mode == "faced" or display_mode == "twice" :
@@ -88,7 +88,7 @@ class Quad_Sphere(object) :
     
     if isinstance(faces_color,Color) :
       if type(faces_color.a) == bool :
-	faces_color.a=0
+        faces_color.a=0
     
     if isinstance(display_ls,bool) :
       self.display_ls=display_ls
@@ -115,14 +115,14 @@ class Quad_Sphere(object) :
       # Loop over every line from the sphere. 
       tmp_polygon=[]
       for vertex in lines :
-	# Loop over every line from the line.
-	
-	res_vertex= matrix * vertex # Multiply the current vertice with the matrix
- 	
- 	# Storing the new position from the vertice.
- 	tmp_polygon.append(res_vertex)  # For the sphere polygon container.
-	center.append(res_vertex)       # For sphere center computing.
-	
+        # Loop over every line from the line.
+        
+        res_vertex= matrix * vertex # Multiply the current vertice with the matrix
+        
+        # Storing the new position from the vertice.
+        tmp_polygon.append(res_vertex)  # For the sphere polygon container.
+        center.append(res_vertex)       # For sphere center computing.
+        
       tmp_polyhedron.append(tmp_polygon)
     
     self.polygons=tmp_polyhedron
@@ -136,131 +136,131 @@ class Quad_Sphere(object) :
   def display(self) :
     if self.display_mode == "lined" :
       if self.lines_color :
-        # Lines color configuration. 	
+        # Lines color configuration.    
         glColor4ubv(self.lines_color.get_ubyte_v())
       
       glLineWidth(self.lines_width)    # Setting the line width given as argument.
       
       i=0
       while i < len(self.polygons) :
-	# Loop displaying the lines of the polygons on an surface of the sphere.
-	# We process by crossing the line displaying.
-	ii=0
-	glBegin(GL_LINE_LOOP)
-	while ii < len(self.polygons[i]) :
-	  glVertex3fv(self.polygons[i][ii].get_vertex())
-	  ii += 1 
-	glEnd()
-	i += 1    
+        # Loop displaying the lines of the polygons on an surface of the sphere.
+        # We process by crossing the line displaying.
+        ii=0
+        glBegin(GL_LINE_LOOP)
+        while ii < len(self.polygons[i]) :
+          glVertex3fv(self.polygons[i][ii].get_vertex())
+          ii += 1 
+        glEnd()
+        i += 1    
       
       
       i=0
       while i < len(self.polygons) :
-	# Loop displaying the lines of the polygons on an surface of the sphere.
-	# We process by crossing the line displaying.
-	ii=0
-	glBegin(GL_LINE_LOOP)
-	while ii < len(self.polygons[i]) : 
-	  glVertex3fv(self.polygons[ii][i].get_vertex())
-	  ii += 1  
-	glEnd()
-	i += 1
-	
+        # Loop displaying the lines of the polygons on an surface of the sphere.
+        # We process by crossing the line displaying.
+        ii=0
+        glBegin(GL_LINE_LOOP)
+        while ii < len(self.polygons[i]) : 
+          glVertex3fv(self.polygons[ii][i].get_vertex())
+          ii += 1  
+        glEnd()
+        i += 1
+        
     elif self.display_mode == "faced" :
       glPolygonMode(GL_FRONT_AND_BACK,GL_FILL) 
       
       if self.faces_color :
-	# Faces color configuration. 
+        # Faces color configuration. 
         glColor4ubv(self.faces_color.get_ubyte_v())
-	
-      i=0	
+        
+      i=0       
       while i < len(self.polygons) :
-	# Iteration over the polygon container variable to compute the quads.
-	ii=0
-	while ii < self.basis-1 :
-	  # We compute the quads: for spheres quads displaying.
-	  glBegin(GL_QUADS)
-	  if not i == self.basis-1 :
-	    glVertex3fv(self.polygons[i][ii].get_vertex())
-	    glVertex3fv(self.polygons[i+1][ii].get_vertex())
-	    glVertex3fv(self.polygons[i+1][ii+1].get_vertex())
-	    glVertex3fv(self.polygons[i][ii+1].get_vertex())
-	  else :
-	    glVertex3fv(self.polygons[i][ii].get_vertex())
-	    glVertex3fv(self.polygons[0][ii].get_vertex())
-	    glVertex3fv(self.polygons[0][ii+1].get_vertex())
-	    glVertex3fv(self.polygons[i][ii+1].get_vertex())
+        # Iteration over the polygon container variable to compute the quads.
+        ii=0
+        while ii < self.basis-1 :
+          # We compute the quads: for spheres quads displaying.
+          glBegin(GL_QUADS)
+          if not i == self.basis-1 :
+            glVertex3fv(self.polygons[i][ii].get_vertex())
+            glVertex3fv(self.polygons[i+1][ii].get_vertex())
+            glVertex3fv(self.polygons[i+1][ii+1].get_vertex())
+            glVertex3fv(self.polygons[i][ii+1].get_vertex())
+          else :
+            glVertex3fv(self.polygons[i][ii].get_vertex())
+            glVertex3fv(self.polygons[0][ii].get_vertex())
+            glVertex3fv(self.polygons[0][ii+1].get_vertex())
+            glVertex3fv(self.polygons[i][ii+1].get_vertex())
           
           glEnd()
           
-	  ii += 1
-	i += 1
-		  
+          ii += 1
+        i += 1
+                  
       
     elif self.display_mode == "twice" :  
       glPolygonMode(GL_FRONT_AND_BACK,GL_FILL) 
       
       if self.faces_color :
         glColor4ubv(self.faces_color.get_ubyte_v())
-	
-      i=0	
+        
+      i=0       
       while i < len(self.polygons) :
-	# Iteration over the polygon container variable to compute the quads.
-	ii=0
-	while ii < self.basis-1 :
-	  # We compute the quads: for spheres quads displaying.
-	  glBegin(GL_QUADS)
-	  if not i == self.basis-1 :
-	    glVertex3fv(self.polygons[i][ii].get_vertex())
-	    glVertex3fv(self.polygons[i+1][ii].get_vertex())
-	    glVertex3fv(self.polygons[i+1][ii+1].get_vertex())
-	    glVertex3fv(self.polygons[i][ii+1].get_vertex())
-	  else :
-	    glVertex3fv(self.polygons[i][ii].get_vertex())
-	    glVertex3fv(self.polygons[0][ii].get_vertex())
-	    glVertex3fv(self.polygons[0][ii+1].get_vertex())
-	    glVertex3fv(self.polygons[i][ii+1].get_vertex())
+        # Iteration over the polygon container variable to compute the quads.
+        ii=0
+        while ii < self.basis-1 :
+          # We compute the quads: for spheres quads displaying.
+          glBegin(GL_QUADS)
+          if not i == self.basis-1 :
+            glVertex3fv(self.polygons[i][ii].get_vertex())
+            glVertex3fv(self.polygons[i+1][ii].get_vertex())
+            glVertex3fv(self.polygons[i+1][ii+1].get_vertex())
+            glVertex3fv(self.polygons[i][ii+1].get_vertex())
+          else :
+            glVertex3fv(self.polygons[i][ii].get_vertex())
+            glVertex3fv(self.polygons[0][ii].get_vertex())
+            glVertex3fv(self.polygons[0][ii+1].get_vertex())
+            glVertex3fv(self.polygons[i][ii+1].get_vertex())
           
           glEnd()
           
-	  ii += 1
-	i += 1
-	
+          ii += 1
+        i += 1
+        
       if self.lines_color :
-        # Lines color configuration. 	
+        # Lines color configuration.    
         glColor4ubv(self.lines_color.get_ubyte_v())
       
       glLineWidth(self.lines_width)    # Setting the line width given as argument.
       
       i=0
       while i < len(self.polygons) :
-	# Loop displaying the lines of the polygons on an surface of the sphere.
-	# We process by crossing the line displaying.
-	ii=0
-	glBegin(GL_LINE_LOOP)
-	while ii < len(self.polygons[i]) :
-	  glVertex3fv(self.polygons[i][ii].get_vertex())
-	  ii += 1 
-	glEnd()
-	i += 1    
+        # Loop displaying the lines of the polygons on an surface of the sphere.
+        # We process by crossing the line displaying.
+        ii=0
+        glBegin(GL_LINE_LOOP)
+        while ii < len(self.polygons[i]) :
+          glVertex3fv(self.polygons[i][ii].get_vertex())
+          ii += 1 
+        glEnd()
+        i += 1    
       
       
       i=0
       while i < len(self.polygons) :
-	# Loop displaying the lines of the polygons on an surface of the sphere.
-	# We process by crossing the line displaying.
-	ii=0
-	glBegin(GL_LINE_LOOP)
-	while ii < len(self.polygons[i]) : 
-	  glVertex3fv(self.polygons[ii][i].get_vertex())
-	  ii += 1  
-	glEnd()
-	i += 1	
-	
+        # Loop displaying the lines of the polygons on an surface of the sphere.
+        # We process by crossing the line displaying.
+        ii=0
+        glBegin(GL_LINE_LOOP)
+        while ii < len(self.polygons[i]) : 
+          glVertex3fv(self.polygons[ii][i].get_vertex())
+          ii += 1  
+        glEnd()
+        i += 1  
+        
     if self.display_ls :
       # Displaying the Localview.
-      self.ls.display(self.radius*2.0/10.0)	
-	
+      self.ls.display(self.radius*2.0/10.0)     
+        
   def set_display_mode(self,display_mode) :
     ''' Change the sphere display mode. 
         Value of argument display_mode should be:
@@ -287,8 +287,8 @@ class Quad_Sphere(object) :
         raise TypeError("Argument lines_color",Color)
       
       if isinstance(lines_color.a,bool) :
-	lines_color.a=0
-	
+        lines_color.a=0
+        
     self.lines_color=lines_color
     
   def set_faces_color(self,faces_color) :
@@ -299,7 +299,7 @@ class Quad_Sphere(object) :
     
     if isinstance(faces_color,Color) :
       if type(faces_color.a) == bool :
-	faces_color.a=0	  
+        faces_color.a=0   
     
     else :
       raise TypeError(Color)
@@ -336,7 +336,7 @@ class Quad_Sphere(object) :
       raise TypeError(int)
 
     if basis < 6 or basis % 2 :
-      print "the basis for the sphere must be greater as 5 and basis % 2 == 0 "
+      print("the basis for the sphere must be greater as 5 and basis % 2 == 0 ")
       quit()
     
     self.basis=basis
@@ -359,7 +359,7 @@ class Quad_Sphere(object) :
   def __doc__(self) :
     ''' Print documentation '''
     
-    print '''
+    print('''
     Generate an quad sphere object with position updating, 
     display and settings setters methods.
     
@@ -388,8 +388,8 @@ class Quad_Sphere(object) :
     The datatype Localview is available throught this module. 
     sea his documentation to know more about.
     
-    '''	
-	
+    ''')
+        
   
   
 class Trigon_Sphere(object) :
@@ -415,7 +415,7 @@ class Trigon_Sphere(object) :
       raise TypeError(int)
 
     if basis < 6 or basis % 4 :
-      print "the basis for the sphere must be greater as 5 and basis % 4 == 0 "
+      print("the basis for the sphere must be greater as 5 and basis % 4 == 0 ")
       quit()
     
     if display_mode == "lined" or display_mode == "faced" or display_mode == "twice" :
@@ -432,7 +432,7 @@ class Trigon_Sphere(object) :
         raise TypeError("Argument faces_color",Color)
       
       
-         	
+                
     
     if not isinstance(lines_width,int) :
       raise TypeError(lines_width,int)
@@ -445,7 +445,7 @@ class Trigon_Sphere(object) :
     
     if not type(faces_color) == bool :
       if type(faces_color.a) == bool :
-	faces_color.a=0
+        faces_color.a=0
     
     if isinstance(display_ls,bool) :
       self.display_ls=display_ls
@@ -473,13 +473,13 @@ class Trigon_Sphere(object) :
       tmp_polygon=[]
       
       for vertex in polygon :
-	# Loop over every vertice from the polygon.
-	
-	res_vertex= matrix * vertex # Multiply the current vertice with the matrix
- 	
- 	# Storing the new position from the vertice.
- 	tmp_polygon.append(res_vertex)  # For the sphere polygon container.
-	center.append(res_vertex)       # For sphere center computing.
+        # Loop over every vertice from the polygon.
+        
+        res_vertex= matrix * vertex # Multiply the current vertice with the matrix
+        
+        # Storing the new position from the vertice.
+        tmp_polygon.append(res_vertex)  # For the sphere polygon container.
+        center.append(res_vertex)       # For sphere center computing.
       
       tmp_polyhedron.append(tmp_polygon)
     
@@ -494,7 +494,7 @@ class Trigon_Sphere(object) :
   def display(self) :
     if self.display_mode == "lined" :
       
-      if self.lines_color :	
+      if self.lines_color :     
         # Lines color configuration. 
         glColor4ubv(self.lines_color.get_ubyte_v())
       
@@ -504,32 +504,32 @@ class Trigon_Sphere(object) :
       boolean=False
 
       while i < len(self.trigons)-1 :
-	# Loop to display the triangles from our sphere.
-	# Throught iterating over the polygons on the XZ surface.
-	ii=-1
-	while ii < len(self.trigons[i])-1 :
+        # Loop to display the triangles from our sphere.
+        # Throught iterating over the polygons on the XZ surface.
+        ii=-1
+        while ii < len(self.trigons[i])-1 :
           glBegin(GL_LINE_LOOP)
-	  if boolean :
-	    glVertex3fv(self.trigons[i][ii].get_vertex())
-	    glVertex3fv(self.trigons[i][ii+1].get_vertex())
-	    glVertex3fv(self.trigons[i+1][ii].get_vertex())
-	  else :
-	    glVertex3fv(self.trigons[i][ii].get_vertex())
-	    glVertex3fv(self.trigons[i][ii+1].get_vertex())
-	    glVertex3fv(self.trigons[i+1][ii+1].get_vertex())
+          if boolean :
+            glVertex3fv(self.trigons[i][ii].get_vertex())
+            glVertex3fv(self.trigons[i][ii+1].get_vertex())
+            glVertex3fv(self.trigons[i+1][ii].get_vertex())
+          else :
+            glVertex3fv(self.trigons[i][ii].get_vertex())
+            glVertex3fv(self.trigons[i][ii+1].get_vertex())
+            glVertex3fv(self.trigons[i+1][ii+1].get_vertex())
           glEnd()
-	  ii += 1
+          ii += 1
 
-	if boolean :
-	  boolean=False
-	else :
-	  boolean=True
+        if boolean :
+          boolean=False
+        else :
+          boolean=True
 
-	i += 1
-	  
+        i += 1
+          
     elif self.display_mode == "faced" :
       
-      if self.faces_color :	
+      if self.faces_color :     
         # Faces color configuration. 
         glColor4ubv(self.faces_color.get_ubyte_v())
       
@@ -537,35 +537,35 @@ class Trigon_Sphere(object) :
       boolean=False
 
       while i < len(self.trigons)-1 :
-	# Loop to display the triangles from our sphere.
-	# Throught iterating over the polygons on the XZ surface.
-	ii=-1
-	while ii < len(self.trigons[i])-1 :
+        # Loop to display the triangles from our sphere.
+        # Throught iterating over the polygons on the XZ surface.
+        ii=-1
+        while ii < len(self.trigons[i])-1 :
           glBegin(GL_TRIANGLES)
-	  if boolean :
-	    glVertex3fv(self.trigons[i][ii].get_vertex())
-	    glVertex3fv(self.trigons[i][ii+1].get_vertex())
-	    glVertex3fv(self.trigons[i+1][ii].get_vertex())
-	  else :
-	    glVertex3fv(self.trigons[i][ii].get_vertex())
-	    glVertex3fv(self.trigons[i][ii+1].get_vertex())
-	    glVertex3fv(self.trigons[i+1][ii+1].get_vertex())
+          if boolean :
+            glVertex3fv(self.trigons[i][ii].get_vertex())
+            glVertex3fv(self.trigons[i][ii+1].get_vertex())
+            glVertex3fv(self.trigons[i+1][ii].get_vertex())
+          else :
+            glVertex3fv(self.trigons[i][ii].get_vertex())
+            glVertex3fv(self.trigons[i][ii+1].get_vertex())
+            glVertex3fv(self.trigons[i+1][ii+1].get_vertex())
           glEnd()
-	  ii += 1
+          ii += 1
 
-	if boolean :
-	  boolean=False
-	else :
-	  boolean=True
+        if boolean :
+          boolean=False
+        else :
+          boolean=True
 
-	i += 1
-		  
+        i += 1
+                  
       
     if self.display_mode == "twice" :  
       glPolygonMode(GL_FRONT_AND_BACK,GL_FILL) 
       
       if self.faces_color :
-         # Faces color configuration. 	
+         # Faces color configuration.   
         glColor4ubv(self.faces_color.get_ubyte_v())
       
       
@@ -573,31 +573,31 @@ class Trigon_Sphere(object) :
       boolean=False
 
       while i < len(self.trigons)-1 :
-	# Loop to display the triangles from our sphere.
-	# Throught iterating over the polygons on the XZ surface.
-	ii=-1
-	while ii < len(self.trigons[i])-1 :
+        # Loop to display the triangles from our sphere.
+        # Throught iterating over the polygons on the XZ surface.
+        ii=-1
+        while ii < len(self.trigons[i])-1 :
           glBegin(GL_TRIANGLES)
-	  if boolean :
-	    glVertex3fv(self.trigons[i][ii].get_vertex())
-	    glVertex3fv(self.trigons[i][ii+1].get_vertex())
-	    glVertex3fv(self.trigons[i+1][ii].get_vertex())
-	  else :
-	    glVertex3fv(self.trigons[i][ii].get_vertex())
-	    glVertex3fv(self.trigons[i][ii+1].get_vertex())
-	    glVertex3fv(self.trigons[i+1][ii+1].get_vertex())
+          if boolean :
+            glVertex3fv(self.trigons[i][ii].get_vertex())
+            glVertex3fv(self.trigons[i][ii+1].get_vertex())
+            glVertex3fv(self.trigons[i+1][ii].get_vertex())
+          else :
+            glVertex3fv(self.trigons[i][ii].get_vertex())
+            glVertex3fv(self.trigons[i][ii+1].get_vertex())
+            glVertex3fv(self.trigons[i+1][ii+1].get_vertex())
           glEnd()
-	  ii += 1
+          ii += 1
 
-	if boolean :
-	  boolean=False
-	else :
-	  boolean=True
+        if boolean :
+          boolean=False
+        else :
+          boolean=True
 
-	i += 1
-	
+        i += 1
+        
       if self.lines_color :
-         # Lines color configuration. 	
+         # Lines color configuration.   
         glColor4ubv(self.lines_color.get_ubyte_v())
       
       glLineWidth(self.lines_width)    # Setting the line width given as argument.
@@ -606,28 +606,28 @@ class Trigon_Sphere(object) :
       boolean=False
 
       while i < len(self.trigons)-1 :
-	# Loop to display the triangles from our sphere.
-	# Throught iterating over the polygons on the XZ surface.
-	ii=-1
-	while ii < len(self.trigons[i])-1 :
+        # Loop to display the triangles from our sphere.
+        # Throught iterating over the polygons on the XZ surface.
+        ii=-1
+        while ii < len(self.trigons[i])-1 :
           glBegin(GL_LINE_LOOP)
-	  if boolean :
-	    glVertex3fv(self.trigons[i][ii].get_vertex())
-	    glVertex3fv(self.trigons[i][ii+1].get_vertex())
-	    glVertex3fv(self.trigons[i+1][ii].get_vertex())
-	  else :
-	    glVertex3fv(self.trigons[i][ii].get_vertex())
-	    glVertex3fv(self.trigons[i][ii+1].get_vertex())
-	    glVertex3fv(self.trigons[i+1][ii+1].get_vertex())
+          if boolean :
+            glVertex3fv(self.trigons[i][ii].get_vertex())
+            glVertex3fv(self.trigons[i][ii+1].get_vertex())
+            glVertex3fv(self.trigons[i+1][ii].get_vertex())
+          else :
+            glVertex3fv(self.trigons[i][ii].get_vertex())
+            glVertex3fv(self.trigons[i][ii+1].get_vertex())
+            glVertex3fv(self.trigons[i+1][ii+1].get_vertex())
           glEnd()
-	  ii += 1
+          ii += 1
 
-	if boolean :
-	  boolean=False
-	else :
-	  boolean=True
+        if boolean :
+          boolean=False
+        else :
+          boolean=True
 
-	i += 1
+        i += 1
 
     if self.display_ls :
       # Displaying the Localview.
@@ -659,8 +659,8 @@ class Trigon_Sphere(object) :
         raise TypeError("Argument lines_color",Color)
       
       if isinstance(lines_color.a,bool) :
-	lines_color.a=0
-	
+        lines_color.a=0
+        
     self.lines_color=lines_color
     
   def set_faces_color(self,faces_color) :
@@ -671,7 +671,7 @@ class Trigon_Sphere(object) :
     
     if isinstance(faces_color,Color) :
       if type(faces_color.a) == bool :
-	faces_color.a=0	  
+        faces_color.a=0   
     
     else :
       raise TypeError(Color)
@@ -708,7 +708,7 @@ class Trigon_Sphere(object) :
       raise TypeError(int)
 
     if basis < 6 or basis % 2 :
-      print "the basis for the sphere must be greater as 5 and basis % 2 == 0 "
+      print("the basis for the sphere must be greater as 5 and basis % 2 == 0 ")
       quit()
     
     self.basis=basis
@@ -730,7 +730,7 @@ class Trigon_Sphere(object) :
   def __doc__(self) :
     ''' Print documentation '''
     
-    print '''
+    print('''
     Generate an trigon sphere object with position updating, 
     display and settings setters methods.
     
@@ -758,4 +758,4 @@ class Trigon_Sphere(object) :
     The datatype Localview is available throught this module. 
     sea his documentation to know more about.
     
-    '''    
+    ''')

@@ -71,29 +71,29 @@ class Poly32Hedron(object) :
       if not isinstance(pentagons_color,Color) and not isinstance(pentagons_color,list) :
         raise TypeError(pentagons_color,Color,list)
       elif isinstance(pentagons_color,list) and len(pentagons_color) != 12 :
-	print "Error pentagons_color argument:\nYou must give an list from 20 Color objects.\nOne Color object per face."
-	quit()
+        print("Error pentagons_color argument:\nYou must give an list from 20 Color objects.\nOne Color object per face.")
+        quit()
       elif isinstance(pentagons_color,list) and len(pentagons_color) == 12 :
         tmp=[]
         pentagons_color_index=0
         while pentagons_color_index < 12 :
-	  if type(pentagons_color[pentagons_color_index].a) == bool :
-	    pentagons_color[pentagons_color_index].a=0
-	  pentagons_color_index += 1
+          if type(pentagons_color[pentagons_color_index].a) == bool :
+            pentagons_color[pentagons_color_index].a=0
+          pentagons_color_index += 1
       
     if triangles_color :
       if not isinstance(triangles_color,Color) and not isinstance(triangles_color,list) :
         raise TypeError(triangles_color,Color,list)
       elif isinstance(triangles_color,list) and len(triangles_color) != 20 :
-	print "Error triangles_color argument:\nYou must give an list from 20 Color objects.\nOne Color object per face."
-	quit()
+        print("Error triangles_color argument:\nYou must give an list from 20 Color objects.\nOne Color object per face.")
+        quit()
       elif isinstance(triangles_color,list) and len(triangles_color) == 20 :
         tmp=[]
         triangles_color_index=0
         while triangles_color_index < 20 :
-	  if type(triangles_color[triangles_color_index].a) == bool :
-	    triangles_color[triangles_color_index].a=0
-	  triangles_color_index += 1    
+          if type(triangles_color[triangles_color_index].a) == bool :
+            triangles_color[triangles_color_index].a=0
+          triangles_color_index += 1    
         
     
     if not isinstance(lines_width,int) :
@@ -107,11 +107,11 @@ class Poly32Hedron(object) :
     
     if isinstance(pentagons_color,Color) :
       if type(pentagons_color.a) == bool :
-	pentagons_color.a=0
-	
+        pentagons_color.a=0
+        
     if isinstance(triangles_color,Color) :
       if type(triangles_color.a) == bool :
-	triangles_color.a=0 	
+        triangles_color.a=0     
     
     if isinstance(display_ls,bool) :
       self.display_ls=display_ls
@@ -137,14 +137,14 @@ class Poly32Hedron(object) :
     for polygon in self.pentagons :
       tmp_polygon=[]
       for vertex in polygon :
-	# Loop over every vertice from the polygon.
-	
-	res_vertex= matrix * vertex # Multiply the current vertice with the matrix
-	
-	# Storing the new position from the vertice.
-	tmp_polygon.append(res_vertex)  # For the polyhedron polygon container.
-	center.append(res_vertex)       # For polyhedron center computing.
-	
+        # Loop over every vertice from the polygon.
+        
+        res_vertex= matrix * vertex # Multiply the current vertice with the matrix
+        
+        # Storing the new position from the vertice.
+        tmp_polygon.append(res_vertex)  # For the polyhedron polygon container.
+        center.append(res_vertex)       # For polyhedron center computing.
+        
       tmp_pentagons.append(tmp_polygon)
     
     
@@ -154,14 +154,14 @@ class Poly32Hedron(object) :
     for polygon in self.triangles :
       tmp_polygon=[]
       for vertex in polygon :
-	# Loop over every vertice from the polygon.
-	
-	res_vertex= matrix * vertex # Multiply the current vertice with the matrix
-	
-	# Storing the new position from the vertice.
-	tmp_polygon.append(res_vertex)  # For the polyhedron polygon container.
-	center.append(res_vertex)       # For polyhedron center computing.
-	  
+        # Loop over every vertice from the polygon.
+        
+        res_vertex= matrix * vertex # Multiply the current vertice with the matrix
+        
+        # Storing the new position from the vertice.
+        tmp_polygon.append(res_vertex)  # For the polyhedron polygon container.
+        center.append(res_vertex)       # For polyhedron center computing.
+          
       tmp_triangles.append(tmp_polygon)
     
     self.triangles=tmp_triangles        # Update the triangle container with the new postion from every vertice.
@@ -179,20 +179,20 @@ class Poly32Hedron(object) :
       glPolygonMode(GL_FRONT_AND_BACK,GL_LINE)
       
       if self.lines_color :
-	# Lines color configuration. 
-	glColor4ubv(self.lines_color.get_ubyte_v())
+        # Lines color configuration. 
+        glColor4ubv(self.lines_color.get_ubyte_v())
       
       glLineWidth(self.lines_width)
     
     
       for polygon in self.pentagons :
-	# Loop over every pentagon from the polyhedron. 
-	# For only lines displaying.
+        # Loop over every pentagon from the polyhedron. 
+        # For only lines displaying.
         glBegin(GL_POLYGON)
         for v in polygon :
-	   # We loop over the every vertice from the polygon.
-	  glVertex3fv(v.get_vertex())
-        glEnd()	
+           # We loop over the every vertice from the polygon.
+          glVertex3fv(v.get_vertex())
+        glEnd() 
       
     
     elif self.display_mode == "faced" :
@@ -200,116 +200,116 @@ class Poly32Hedron(object) :
       glPolygonMode(GL_FRONT_AND_BACK,GL_FILL)
       
       if self.pentagons_color and isinstance(self.pentagons_color,Color) :
-	# Case one same color for the faces displaying.
-	glColor4ubv(self.pentagons_color.get_ubyte_v())
+        # Case one same color for the faces displaying.
+        glColor4ubv(self.pentagons_color.get_ubyte_v())
       
       
-	
-      pentagons_color_index=0  # Iterator, case there are more than one color for the faces displaying.		
-	
+        
+      pentagons_color_index=0  # Iterator, case there are more than one color for the faces displaying.         
+        
       if self.pentagons_color and isinstance(self.pentagons_color,Color) :
-	# Case one same color for the faces displaying.
-	glColor4ubv(self.pentagons_color.get_ubyte_v())
+        # Case one same color for the faces displaying.
+        glColor4ubv(self.pentagons_color.get_ubyte_v())
       
       for polygon in self.pentagons :
-	# Loop over every pentagon from the polyhedron. 
-	if self.pentagons_color and isinstance(self.pentagons_color,list) : 
-	  # Case there are more than one color for the faces displaying.
-	  glColor4ubv(self.pentagons_color[pentagons_color_index].get_ubyte_v())
-	
-	glBegin(GL_POLYGON)
-	for v in polygon :
-	   # We loop over the every vertice from the polygon.
-	  glVertex3fv(v.get_vertex())
-	glEnd()	
+        # Loop over every pentagon from the polyhedron. 
+        if self.pentagons_color and isinstance(self.pentagons_color,list) : 
+          # Case there are more than one color for the faces displaying.
+          glColor4ubv(self.pentagons_color[pentagons_color_index].get_ubyte_v())
+        
+        glBegin(GL_POLYGON)
+        for v in polygon :
+           # We loop over the every vertice from the polygon.
+          glVertex3fv(v.get_vertex())
+        glEnd() 
     
-	pentagons_color_index += 1
+        pentagons_color_index += 1
       
       if self.triangles_color and isinstance(self.triangles_color,Color) :
-	# Case one same color for the faces displaying.
-	glColor4ubv(self.triangles_color.get_ubyte_v())
-	
-      triangles_color_index=0  # Iterator, case there are more than one color for the faces displaying.	
-	
+        # Case one same color for the faces displaying.
+        glColor4ubv(self.triangles_color.get_ubyte_v())
+        
+      triangles_color_index=0  # Iterator, case there are more than one color for the faces displaying. 
+        
       for polygon in self.triangles :
-	# Loop over every triangle from the polyhedron. 
-	if self.triangles_color and isinstance(self.triangles_color,list) :
-	  # Case there are more than one color for the faces displaying.
-	  glColor4ubv(self.triangles_color[triangles_color_index].get_ubyte_v())
-	  
-	glBegin(GL_POLYGON)
-	for v in polygon :
-	   # We loop over the every vertice from the polygon.
-	  glVertex3fv(v.get_vertex())
-	glEnd()
-	triangles_color_index += 1
+        # Loop over every triangle from the polyhedron. 
+        if self.triangles_color and isinstance(self.triangles_color,list) :
+          # Case there are more than one color for the faces displaying.
+          glColor4ubv(self.triangles_color[triangles_color_index].get_ubyte_v())
+          
+        glBegin(GL_POLYGON)
+        for v in polygon :
+           # We loop over the every vertice from the polygon.
+          glVertex3fv(v.get_vertex())
+        glEnd()
+        triangles_color_index += 1
       
     elif self.display_mode == "twice" :
       # Configuration of polygons faces displaying.  
       glPolygonMode(GL_FRONT_AND_BACK,GL_FILL)
       
       if self.pentagons_color and isinstance(self.pentagons_color,Color) :
-	# Case one same color for the faces displaying.
-	glColor4ubv(self.pentagons_color.get_ubyte_v())
+        # Case one same color for the faces displaying.
+        glColor4ubv(self.pentagons_color.get_ubyte_v())
       
       
-	
-      pentagons_color_index=0  # Iterator, case there are more than one color for the faces displaying.		
-	
+        
+      pentagons_color_index=0  # Iterator, case there are more than one color for the faces displaying.         
+        
       if self.pentagons_color and isinstance(self.pentagons_color,Color) :
-	# Case one same color for the faces displaying.
-	glColor4ubv(self.pentagons_color.get_ubyte_v())
+        # Case one same color for the faces displaying.
+        glColor4ubv(self.pentagons_color.get_ubyte_v())
       
       for polygon in self.pentagons :
-	# Loop over every pentagon from the polyhedron. 
-	if self.pentagons_color and isinstance(self.pentagons_color,list) : 
-	  glColor4ubv(self.pentagons_color[pentagons_color_index].get_ubyte_v())
-	
-	glBegin(GL_POLYGON)
-	for v in polygon :
-	   # We loop over the every vertice from the polygon.
-	  glVertex3fv(v.get_vertex())
-	glEnd()	
+        # Loop over every pentagon from the polyhedron. 
+        if self.pentagons_color and isinstance(self.pentagons_color,list) : 
+          glColor4ubv(self.pentagons_color[pentagons_color_index].get_ubyte_v())
+        
+        glBegin(GL_POLYGON)
+        for v in polygon :
+           # We loop over the every vertice from the polygon.
+          glVertex3fv(v.get_vertex())
+        glEnd() 
     
-	pentagons_color_index += 1
+        pentagons_color_index += 1
       
       if self.triangles_color and isinstance(self.triangles_color,Color) :
-	# Case one same color for the faces displaying.
-	glColor4ubv(self.triangles_color.get_ubyte_v())
-	
-      triangles_color_index=0  # Iterator, case there are more than one color for the faces displaying.	
-	
+        # Case one same color for the faces displaying.
+        glColor4ubv(self.triangles_color.get_ubyte_v())
+        
+      triangles_color_index=0  # Iterator, case there are more than one color for the faces displaying. 
+        
       for polygon in self.triangles :
-	# Loop over every triangle from the polyhedron. 
-	if self.triangles_color and isinstance(self.triangles_color,list) : 
-	  # Case there are more than one color for the faces displaying.
-	  glColor4ubv(self.triangles_color[triangles_color_index].get_ubyte_v())
-	  
-	glBegin(GL_POLYGON)
-	for v in polygon :
-	  # We loop over the every vertice from the polygon.
-	  glVertex3fv(v.get_vertex())
-	glEnd()
-	triangles_color_index += 1
+        # Loop over every triangle from the polyhedron. 
+        if self.triangles_color and isinstance(self.triangles_color,list) : 
+          # Case there are more than one color for the faces displaying.
+          glColor4ubv(self.triangles_color[triangles_color_index].get_ubyte_v())
+          
+        glBegin(GL_POLYGON)
+        for v in polygon :
+          # We loop over the every vertice from the polygon.
+          glVertex3fv(v.get_vertex())
+        glEnd()
+        triangles_color_index += 1
        
       # Configuration of polygons lines displaying. 
       glPolygonMode(GL_FRONT_AND_BACK,GL_LINE)
       
       if self.lines_color :
-	# Lines color configuration. 
-	glColor4ubv(self.lines_color.get_ubyte_v())
+        # Lines color configuration. 
+        glColor4ubv(self.lines_color.get_ubyte_v())
       
       glLineWidth(self.lines_width)
     
     
       for polygon in self.pentagons :
-	# Loop over every pentagon from the polyhedron. 
-	# For only lines displaying.
+        # Loop over every pentagon from the polyhedron. 
+        # For only lines displaying.
         glBegin(GL_POLYGON)
         for v in polygon :
-	  # We loop over the every vertice from the polygon.
-	  glVertex3fv(v.get_vertex())
-        glEnd()	
+          # We loop over the every vertice from the polygon.
+          glVertex3fv(v.get_vertex())
+        glEnd() 
       
     if self.display_ls :
       # Displaying the Localview.
@@ -341,8 +341,8 @@ class Poly32Hedron(object) :
         raise TypeError("Argument lines_color",Color)
       
       if isinstance(lines_color.a,bool) :
-	lines_color.a=0
-	
+        lines_color.a=0
+        
       self.lines_color=lines_color
     
   def set_pentagons_color(self,pentagons_color) :
@@ -359,20 +359,20 @@ class Poly32Hedron(object) :
         raise TypeError(pentagons_color,Color,list)
       
       elif isinstance(pentagons_color,list) and len(pentagons_color) != 12 :
-	print "Error pentagons_color argument:\nYou must give an list from 12 Color objects.\nOne Color object per face."
-	quit()
-	
+        print("Error pentagons_color argument:\nYou must give an list from 12 Color objects.\nOne Color object per face.")
+        quit()
+        
       elif isinstance(pentagons_color,list) and len(pentagons_color) == 12 :
         tmp=[]
         pentagons_color_index=0
         while pentagons_color_index < 12 :
-	  if type(pentagons_color[pentagons_color_index].a) == bool :
-	    pentagons_color[pentagons_color_index].a=0
-	  pentagons_color_index += 1
-	  
+          if type(pentagons_color[pentagons_color_index].a) == bool :
+            pentagons_color[pentagons_color_index].a=0
+          pentagons_color_index += 1
+          
       elif isinstance(pentagons_color,Color) :
-	if type(pentagons_color.a) == bool :
-	    pentagons_color.a=0	  
+        if type(pentagons_color.a) == bool :
+            pentagons_color.a=0   
       
       else :
         raise TypeError(Color)
@@ -393,20 +393,20 @@ class Poly32Hedron(object) :
         raise TypeError(triangles_color,Color,list)
       
       elif isinstance(triangles_color,list) and len(triangles_color) != 20 :
-	print "Error triangles_color argument:\nYou must give an list from 20 Color objects.\nOne Color object per face."
-	quit()
+        print("Error triangles_color argument:\nYou must give an list from 20 Color objects.\nOne Color object per face.")
+        quit()
       
       elif isinstance(triangles_color,list) and len(triangles_color) == 20 :
         tmp=[]
         triangles_color_index=0
         while triangles_color_index < 20 :
-	  if type(triangles_color[triangles_color_index].a) == bool :
-	    triangles_color[triangles_color_index].a=0
-	  triangles_color_index += 1    
+          if type(triangles_color[triangles_color_index].a) == bool :
+            triangles_color[triangles_color_index].a=0
+          triangles_color_index += 1    
       
       elif isinstance(triangles_color,Color) :
-	if type(triangles_color.a) == bool :
-	    triangles_color.a=0
+        if type(triangles_color.a) == bool :
+            triangles_color.a=0
       
       else :
         raise TypeError(Color)
@@ -449,7 +449,7 @@ class Poly32Hedron(object) :
   def __doc__(self) :
     ''' Print documentation '''
     
-    print '''
+    print('''
     Generate an 32hedron object with position updating, 
     display and settings setters methods.
     
@@ -483,4 +483,4 @@ class Poly32Hedron(object) :
     The datatype Localview is available throught this module. 
     sea his documentation to know more about.
     
-    '''      
+    ''')

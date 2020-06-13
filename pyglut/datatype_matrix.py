@@ -415,12 +415,12 @@ class Matrix(object) :
         mult.sight=self.mult_vector(mult.sight)  # Localview Z axe vector multiplying.
         return mult
       except :
-	return None
+        return None
       
   def __doc__(self) :
     ''' Print documentation '''
     
-    print '''
+    print('''
     The Matrix computing is the heart of the 3D programmation.
     
     You can configure the matrix to apply changing to your 3D object
@@ -438,8 +438,8 @@ class Matrix(object) :
     For apply movement on the own axe of your 3D object you must 
     
     first: translate the vertex of your 3D object according to his
-	   center, which can be retrieve throught the pyglut module 
-	   function: get_center_from_polyhedron(vertex_list).
+           center, which can be retrieve throught the pyglut module 
+           function: get_center_from_polyhedron(vertex_list).
     
     Then: multiply every vertex from your 3D object with the matrix.
     
@@ -454,7 +454,7 @@ class Matrix(object) :
     >>> m.rotate_z(angle)   # The operations you want to perform.
     >>> res=[]
     >>> for v in object.vertex_list :
-	  res.append( m * v )
+          res.append( m * v )
     >>> object.vertex_list=res      
     >>> m.translate(object.center.wx,object.center.wy,object.center.wz) 
 
@@ -472,4 +472,4 @@ class Matrix(object) :
     and rotated from 45 degrees in clock sens.
     
     And many others usage...
-    '''
+    ''')

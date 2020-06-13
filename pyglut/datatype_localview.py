@@ -106,7 +106,7 @@ class Localview(object) :
     
   def __doc__(self) :
     ''' print documentation '''
-    print '''
+    print('''
     Localview management class implementing an
     <type 'Localview'> datatype.
     
@@ -116,32 +116,31 @@ class Localview(object) :
     
     An locaview is made from:
     -> An localview position vertex, object from <type 'Vertex'>.
-	which is the position from:
-	-> The camera.
-	-> The center from the 3D object.
-	referenced as an attribute named: Localview.pos
-	
+        which is the position from:
+        -> The camera.
+        -> The center from the 3D object.
+        referenced as an attribute named: Localview.pos
+        
       -> 3 axes, objects from <type 'Vector'>. Representing either:
-	-> The camera orientation.
-	-> The own axes from the 3D object.
-	
+        -> The camera orientation.
+        -> The own axes from the 3D object.
+        
     The Localview class implement:
       
     -) multiplication with an matrix methods:
       
     either as the method: 
     -> Localview.mult_matrix(matrix)
-	  which take an matrix containing the changing to apply
-	  to the localview.
+          which take an matrix containing the changing to apply
+          to the localview.
     -> an multiply sign placeholder:
-	  The matrix to multiply with must be at the right to
-	  the localview:
-	  
-	    Localview * Matrix 
+          The matrix to multiply with must be at the right to
+          the localview:
+          
+            Localview * Matrix 
       
     -) An Locaview display method for debugging purpose.
           Which display the axes in their current orientation
-	  from the center to the greater values from the axes.
-	  At the current Localview position.
-          '''      
-              
+          from the center to the greater values from the axes.
+          At the current Localview position.
+          ''')

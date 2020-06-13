@@ -119,7 +119,7 @@ class Color(object) :
       self.g=self.g/255. ;
       self.b=self.b/255. ;
       if not isinstance(self.a,bool) :  
-	self.a=self.a/255. ; 
+        self.a=self.a/255. ; 
       
       self.encoding="float" ;
       
@@ -136,7 +136,7 @@ class Color(object) :
       self.g=int(self.g*255.) ;
       self.b=int(self.b*255.) ;
       if not isinstance(self.a,bool) :   
-	self.a=int(self.a*255.) ;
+        self.a=int(self.a*255.) ;
     
       self.encoding="ub" ;
     
@@ -171,15 +171,15 @@ class Color(object) :
     
   def __doc__(self) :
     ''' Print documentation '''
-    print '''
+    print('''
     Colors management class implementing an
     <type 'Color'> datatype.
     The Color can be initialize with an sequence from:
     -> unsigned byte color encoding: values == [0-255].
     -> float color encoding        : values == [0.0-1.0]. 
     with the keywords: ub_v (unsigned bytes vector).
-			f_v  (floats vector).
-	
+                        f_v  (floats vector).
+        
     The Color class implement color encoding conversion methods:
     
     -> set_in_float_values() 
@@ -205,4 +205,4 @@ class Color(object) :
     Color.g (Green).
     Color.b (Blue).
     Color.a (Alpha).
-    '''
+    ''')

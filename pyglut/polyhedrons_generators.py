@@ -117,8 +117,8 @@ def generate_octahedron(side_length) :
          # You can use the function: generate_polygon_on_yz_radius(...) instead.
          
   return ((quad_xy[0],quad_yz[0],quad_yz[1]),(quad_xy[0],quad_yz[1],quad_yz[2]),(quad_xy[0],quad_yz[2],quad_yz[3]),(quad_xy[0],quad_yz[3],quad_yz[0]),
-	  (quad_xy[2],quad_yz[0],quad_yz[1]),(quad_xy[2],quad_yz[1],quad_yz[2]),(quad_xy[2],quad_yz[2],quad_yz[3]),(quad_xy[2],quad_yz[3],quad_yz[0]) 
-	  ) # Return 8 triangles sequences who form assembled an octahedron.
+          (quad_xy[2],quad_yz[0],quad_yz[1]),(quad_xy[2],quad_yz[1],quad_yz[2]),(quad_xy[2],quad_yz[2],quad_yz[3]),(quad_xy[2],quad_yz[3],quad_yz[0]) 
+          ) # Return 8 triangles sequences who form assembled an octahedron.
 
 
 def generate_icosahedron(side_length) :
@@ -195,13 +195,13 @@ def generate_dodecahedron(side_length) :
   pentagone.append(get_center_from_polygon(ico[2]))
   dodecahedron.append(pentagone) # Add pentagone to dodecahedron pentagones container.
   
-  # print 80*'-'
-  # print "1"
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[0]),get_center_from_polygon(ico[5]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[5]),get_center_from_polygon(ico[1]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[1]),get_center_from_polygon(ico[6]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[6]),get_center_from_polygon(ico[2]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[0]),get_center_from_polygon(ico[2]))
+  # print(80*'-')
+  # print("1")
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[0]),get_center_from_polygon(ico[5])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[5]),get_center_from_polygon(ico[1])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[1]),get_center_from_polygon(ico[6])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[6]),get_center_from_polygon(ico[2])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[0]),get_center_from_polygon(ico[2])))
 
   
   pentagone=[]     # Define an pentagone temporary container.
@@ -212,13 +212,13 @@ def generate_dodecahedron(side_length) :
   pentagone.append(get_center_from_polygon(ico[13]))
   dodecahedron.append(pentagone) # Add pentagone to dodecahedron pentagones container.
   
-  # print 80*'-'
-  # print "2"
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[9]),get_center_from_polygon(ico[3]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[3]),get_center_from_polygon(ico[7]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[7]),get_center_from_polygon(ico[19]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[19]),get_center_from_polygon(ico[13]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[13]),get_center_from_polygon(ico[9]))
+  # print(80*'-')
+  # print("2")
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[9]),get_center_from_polygon(ico[3])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[3]),get_center_from_polygon(ico[7])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[7]),get_center_from_polygon(ico[19])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[19]),get_center_from_polygon(ico[13])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[13]),get_center_from_polygon(ico[9])))
   
   
   pentagone=[]     # Define an pentagone temporary container.
@@ -229,13 +229,13 @@ def generate_dodecahedron(side_length) :
   pentagone.append(get_center_from_polygon(ico[3]))
   dodecahedron.append(pentagone) # Add pentagone to dodecahedron pentagones container.
   
-  # print 80*'-'
-  # print "3"
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[9]),get_center_from_polygon(ico[14]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[14]),get_center_from_polygon(ico[16]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[16]),get_center_from_polygon(ico[4]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[4]),get_center_from_polygon(ico[3]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[3]),get_center_from_polygon(ico[9]))
+  # print(80*'-')
+  # print("3")
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[9]),get_center_from_polygon(ico[14])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[14]),get_center_from_polygon(ico[16])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[16]),get_center_from_polygon(ico[4])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[4]),get_center_from_polygon(ico[3])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[3]),get_center_from_polygon(ico[9])))
   
   pentagone=[]     # Define an pentagone temporary container.
   pentagone.append(get_center_from_polygon(ico[0])) 
@@ -245,13 +245,13 @@ def generate_dodecahedron(side_length) :
   pentagone.append(get_center_from_polygon(ico[4]))
   dodecahedron.append(pentagone) # Add pentagone to dodecahedron pentagones container.
   
-  # print 80*'-'
-  # print "4"
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[0]),get_center_from_polygon(ico[2]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[2]),get_center_from_polygon(ico[7]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[7]),get_center_from_polygon(ico[3]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[3]),get_center_from_polygon(ico[4]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[4]),get_center_from_polygon(ico[0]))
+  # print(80*'-')
+  # print("4")
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[0]),get_center_from_polygon(ico[2])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[2]),get_center_from_polygon(ico[7])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[7]),get_center_from_polygon(ico[3])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[3]),get_center_from_polygon(ico[4])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[4]),get_center_from_polygon(ico[0])))
   
   pentagone=[]     # Define an pentagone temporary container.
   pentagone.append(get_center_from_polygon(ico[5])) 
@@ -261,13 +261,13 @@ def generate_dodecahedron(side_length) :
   pentagone.append(get_center_from_polygon(ico[17])) 
   dodecahedron.append(pentagone) # Add pentagone to dodecahedron pentagones container.
   
-  # print 80*'-'
-  # print "5"
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[5]),get_center_from_polygon(ico[0]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[0]),get_center_from_polygon(ico[4]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[4]),get_center_from_polygon(ico[16]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[16]),get_center_from_polygon(ico[17]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[17]),get_center_from_polygon(ico[5]))
+  # print(80*'-')
+  # print("5")
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[5]),get_center_from_polygon(ico[0])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[0]),get_center_from_polygon(ico[4])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[4]),get_center_from_polygon(ico[16])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[16]),get_center_from_polygon(ico[17])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[17]),get_center_from_polygon(ico[5])))
   
   pentagone=[]  # Define an pentagone temporary container.
   pentagone.append(get_center_from_polygon(ico[17])) 
@@ -277,13 +277,13 @@ def generate_dodecahedron(side_length) :
   pentagone.append(get_center_from_polygon(ico[15])) 
   dodecahedron.append(pentagone) # Add pentagone to dodecahedron pentagones container.
   
-  # print 80*'-'
-  # print "6"
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[17]),get_center_from_polygon(ico[5]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[5]),get_center_from_polygon(ico[1]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[1]),get_center_from_polygon(ico[11]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[11]),get_center_from_polygon(ico[15]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[15]),get_center_from_polygon(ico[17]))
+  # print(80*'-')
+  # print("6")
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[17]),get_center_from_polygon(ico[5])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[5]),get_center_from_polygon(ico[1])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[1]),get_center_from_polygon(ico[11])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[11]),get_center_from_polygon(ico[15])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[15]),get_center_from_polygon(ico[17])))
   
   pentagone=[]     # Define an pentagone temporary container.
   pentagone.append(get_center_from_polygon(ico[15])) 
@@ -293,13 +293,13 @@ def generate_dodecahedron(side_length) :
   pentagone.append(get_center_from_polygon(ico[10])) 
   dodecahedron.append(pentagone) # Add pentagone to dodecahedron pentagones container.
   
-  # print 80*'-'
-  # print "7"
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[15]),get_center_from_polygon(ico[17]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[17]),get_center_from_polygon(ico[16]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[16]),get_center_from_polygon(ico[14]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[14]),get_center_from_polygon(ico[10]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[15]),get_center_from_polygon(ico[10]))
+  # print(80*'-')
+  # print("7")
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[15]),get_center_from_polygon(ico[17])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[17]),get_center_from_polygon(ico[16])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[16]),get_center_from_polygon(ico[14])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[14]),get_center_from_polygon(ico[10])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[15]),get_center_from_polygon(ico[10])))
   
   pentagone=[]     # Define an pentagone temporary container.
   pentagone.append(get_center_from_polygon(ico[10])) 
@@ -309,13 +309,13 @@ def generate_dodecahedron(side_length) :
   pentagone.append(get_center_from_polygon(ico[8])) 
   dodecahedron.append(pentagone) # Add pentagone to dodecahedron pentagones container.
   
-  # print 80*'-'
-  # print "8"
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[10]),get_center_from_polygon(ico[14]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[14]),get_center_from_polygon(ico[9]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[9]),get_center_from_polygon(ico[13]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[13]),get_center_from_polygon(ico[8]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[8]),get_center_from_polygon(ico[10]))
+  # print(80*'-')
+  # print("8")
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[10]),get_center_from_polygon(ico[14])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[14]),get_center_from_polygon(ico[9])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[9]),get_center_from_polygon(ico[13])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[13]),get_center_from_polygon(ico[8])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[8]),get_center_from_polygon(ico[10])))
   
   pentagone=[]     # Define an pentagone temporary container.
   pentagone.append(get_center_from_polygon(ico[8])) 
@@ -325,13 +325,13 @@ def generate_dodecahedron(side_length) :
   pentagone.append(get_center_from_polygon(ico[12])) 
   dodecahedron.append(pentagone) # Add pentagone to dodecahedron pentagones container.
   
-  # print 80*'-'
-  # print "9"
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[8]),get_center_from_polygon(ico[10]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[10]),get_center_from_polygon(ico[15]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[15]),get_center_from_polygon(ico[11]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[11]),get_center_from_polygon(ico[12]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[12]),get_center_from_polygon(ico[8]))
+  # print(80*'-')
+  # print("9")
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[8]),get_center_from_polygon(ico[10])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[10]),get_center_from_polygon(ico[15])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[15]),get_center_from_polygon(ico[11])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[11]),get_center_from_polygon(ico[12])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[12]),get_center_from_polygon(ico[8])))
   
   pentagone=[]  # Define an pentagone temporary container.
   pentagone.append(get_center_from_polygon(ico[11])) 
@@ -341,13 +341,13 @@ def generate_dodecahedron(side_length) :
   pentagone.append(get_center_from_polygon(ico[1]))
   dodecahedron.append(pentagone) # Add pentagone to dodecahedron pentagones container.
   
-  # print 80*'-'
-  # print "10"
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[11]),get_center_from_polygon(ico[12]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[12]),get_center_from_polygon(ico[18]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[18]),get_center_from_polygon(ico[6]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[6]),get_center_from_polygon(ico[1]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[1]),get_center_from_polygon(ico[11]))
+  # print(80*'-')
+  # print("10")
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[11]),get_center_from_polygon(ico[12])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[12]),get_center_from_polygon(ico[18])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[18]),get_center_from_polygon(ico[6])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[6]),get_center_from_polygon(ico[1])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[1]),get_center_from_polygon(ico[11])))
   
   pentagone=[]     # Define an pentagone temporary container.
   pentagone.append(get_center_from_polygon(ico[12])) 
@@ -359,13 +359,13 @@ def generate_dodecahedron(side_length) :
   
   
   
-  # print 80*'-'
-  # print "11"
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[12]),get_center_from_polygon(ico[18]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[18]),get_center_from_polygon(ico[19]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[19]),get_center_from_polygon(ico[13]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[13]),get_center_from_polygon(ico[8]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[8]),get_center_from_polygon(ico[12]))
+  # print(80*'-')
+  # print("11")
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[12]),get_center_from_polygon(ico[18])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[18]),get_center_from_polygon(ico[19])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[19]),get_center_from_polygon(ico[13])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[13]),get_center_from_polygon(ico[8])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[8]),get_center_from_polygon(ico[12])))
   
   pentagone=[]     # Define an pentagone temporary container.
   pentagone.append(get_center_from_polygon(ico[6]))
@@ -375,13 +375,13 @@ def generate_dodecahedron(side_length) :
   pentagone.append(get_center_from_polygon(ico[18]))
   dodecahedron.append(pentagone) # Add pentagone to dodecahedron pentagones container.
   
-  # print 80*'-'
-  # print "12"
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[6]),get_center_from_polygon(ico[2]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[2]),get_center_from_polygon(ico[7]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[7]),get_center_from_polygon(ico[19]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[19]),get_center_from_polygon(ico[18]))
-  # print "get length ",get_distance_vertices(get_center_from_polygon(ico[18]),get_center_from_polygon(ico[6]))
+  # print(80*'-')
+  # print("12")
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[6]),get_center_from_polygon(ico[2])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[2]),get_center_from_polygon(ico[7])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[7]),get_center_from_polygon(ico[19])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[19]),get_center_from_polygon(ico[18])))
+  # print("get length ",get_distance_vertices(get_center_from_polygon(ico[18]),get_center_from_polygon(ico[6])))
   
   return dodecahedron
 
@@ -568,14 +568,14 @@ def generate_polyhedron_32_faces(side_length) :
   ico_base_quads,ico=generate_icosahedron(side_length) # Return the ico construction base quads
                                                        # and the triangles from the icosahedron.
   
-  upper=ico_base_quads[2][2]	# Top vertice from the icosahedron we gonna use as construction reference.
+  upper=ico_base_quads[2][2]    # Top vertice from the icosahedron we gonna use as construction reference.
   
    
   penta_1=[ico_base_quads[2][3],ico_base_quads[1][2],ico_base_quads[0][0],ico_base_quads[0][1],ico_base_quads[1][1]]
   
   penta_2=[ico_base_quads[2][1],ico_base_quads[1][3],ico_base_quads[0][3],ico_base_quads[0][2],ico_base_quads[1][0]]
   
-  down=ico_base_quads[2][0]	# Down vertice from the icosahedron we gonna use as construction reference.
+  down=ico_base_quads[2][0]     # Down vertice from the icosahedron we gonna use as construction reference.
   
   pentagon_top=[]
   pentagon_bottom=[]
@@ -698,9 +698,9 @@ def generate_polyhedron_32_faces(side_length) :
   triangle_bottom_5=[pentagon_middle_bottom_5[4],pentagon_bottom[3],pentagon_bottom[4]]
   
   sequence_of_triangles = [triangle_top_1,triangle_top_2,triangle_top_3,triangle_top_4,triangle_top_5,
-	                  triangle_middle_top_1,triangle_middle_top_2,triangle_middle_top_3,triangle_middle_top_4,triangle_middle_top_5,
-	                  triangle_middle_bottom_1,triangle_middle_bottom_2,triangle_middle_bottom_3,triangle_middle_bottom_4,triangle_middle_bottom_5,
-	                  triangle_bottom_1,triangle_bottom_2,triangle_bottom_3,triangle_bottom_4,triangle_bottom_5]
+                          triangle_middle_top_1,triangle_middle_top_2,triangle_middle_top_3,triangle_middle_top_4,triangle_middle_top_5,
+                          triangle_middle_bottom_1,triangle_middle_bottom_2,triangle_middle_bottom_3,triangle_middle_bottom_4,triangle_middle_bottom_5,
+                          triangle_bottom_1,triangle_bottom_2,triangle_bottom_3,triangle_bottom_4,triangle_bottom_5]
   
   sequence_of_pentagons = [pentagon_top,
                            pentagon_middle_top_1,pentagon_middle_top_2,pentagon_middle_top_3,pentagon_middle_top_4,pentagon_middle_top_5,

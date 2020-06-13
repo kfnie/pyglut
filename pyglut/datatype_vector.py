@@ -91,7 +91,7 @@ class Vector(object) :
 
   def mult_vector(self,mult,vector=False) :
     ''' Multiply the vector object or the given vector with the given mult argument what:
-	Increment the vector length and if mult is negativ flip the vector direction. '''
+        Increment the vector length and if mult is negativ flip the vector direction. '''
 
     if not isinstance(mult,int) and not isinstance(mult,float) :
       raise TypeError(int,float)
@@ -99,7 +99,7 @@ class Vector(object) :
     if vector :
     
       if not isinstance(vector,Vector) :
-	raise TypeError(Vector)
+        raise TypeError(Vector)
       
       return Vector(vector.x * mult, vector.y * mult, vector.z * mult) 
       
@@ -121,7 +121,7 @@ class Vector(object) :
     if vector :
     
       if not isinstance(vector,Vector) :
-	raise TypeError(Vector)
+        raise TypeError(Vector)
       
       return Vector(vector.x / div, vector.y / div, vector.z / div)
       
@@ -150,7 +150,7 @@ class Vector(object) :
     if vector :
     
       if not isinstance(vector,Vector) :
-	raise TypeError(Vector)
+        raise TypeError(Vector)
       
       return Vertex(vector.x + vertex.wx, vector.y + vertex.wy, vector.z + vertex.wz)  
       
@@ -164,7 +164,7 @@ class Vector(object) :
 
   def cross(self,vector1,vector2) :
     ''' Compute the cross product from 2 vectors
-	and return the result as an Vector object.
+        and return the result as an Vector object.
     '''
 
     if not isinstance(vector1,Vector) or not isinstance(vector2,Vector):
@@ -194,7 +194,7 @@ class Vector(object) :
 
   def __mul__(self,mult) :
     ''' multiply sign wrapper for incrementing the vector length and
-	if mult is negativ flip the vector direction. '''
+        if mult is negativ flip the vector direction. '''
 
     if not isinstance(mult,int) and not isinstance(mult,float) :
       raise TypeError(int,float)
@@ -203,7 +203,7 @@ class Vector(object) :
 
   def __div__(self,div) :
     ''' divide sign wrapper for decrementing the vector length and
-	if div is negativ flip the vector direction. '''
+        if div is negativ flip the vector direction. '''
 
     if not isinstance(div,int) and not isinstance(div,float) :
       raise TypeError(int,float)
@@ -217,7 +217,7 @@ class Vector(object) :
   
   def __doc__(self) :
     ''' Print Documentation '''
-    print '''
+    print('''
     Vector management class implementing the
     <type 'Vector'> datatype.
     With many vectors operations methods:
@@ -249,4 +249,4 @@ class Vector(object) :
     And an power           : vector length.
     
     And many others purposes...
-    '''
+    ''')
